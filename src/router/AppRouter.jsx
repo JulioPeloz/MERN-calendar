@@ -14,7 +14,7 @@ export const AppRouter = () => {
     }, [])
     
 
-    if(status === 'Checking'){
+    if(status === 'checking'){
       return (
         <h3>Cargando...</h3>
       )
@@ -31,7 +31,7 @@ export const AppRouter = () => {
                 )
                 : (
                   <>
-                    <Route path='/*' element={<CalendarPage/>}/>
+                    <Route path='/' element={<CalendarPage/>}/>
                     <Route path="/*" element={ <Navigate to='/'/> }/>
                   </>
                 )
