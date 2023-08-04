@@ -28,7 +28,7 @@ export const CalendarModal = () => {
 
     const { isDateModalOpen, closeDateModal } = useUiStore();
     const { activeEvent, startSavingEvent } = useCalendarStore();
-    const [formSubmitted, setFormSubmitted] = useState(false); // es flase porque por defecto no se ha hecho el submit del formulario
+    const [formSubmitted, setFormSubmitted] = useState(false); // es false porque por defecto no se ha hecho el submit del formulario
 
     const [formValues, setFormValues] = useState({
         title: '',

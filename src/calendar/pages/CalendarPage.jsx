@@ -5,20 +5,22 @@ import { addHours } from "date-fns"
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { getMessagesES, localizer } from "../../helpers";
 import { useEffect, useState } from "react";
-import { useUiStore, useCalendarStore } from "../../hooks";
+import { useUiStore, useCalendarStore, useAuthStore } from "../../hooks";
 
   
 export const CalendarPage = () => {
 
+    const { user } = useAuthStore();
     const {openDateModal} = useUiStore();
     const { events, setActiveEvent, startLoadingEvents } = useCalendarStore();
     const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
 
     const eventStyleGetter = ( event, start, end, isSelected ) => {
-        //console.log({event, start, end, isSelected});
+        
+        const isMyEvent = (user.uid === event.user._id) || (user.uid === event.user.uid);
 
         const style = {
-            backgroundColor: '#347CF7',
+            backgroundColor: isMyEvent ? '#347CF7' : '#465660',
             borderRadius: '0px',
             opacity: 0.8,
             color: 'white'
@@ -54,7 +56,7 @@ export const CalendarPage = () => {
         <Navbar/>
 
         <Calendar
-        culture="es" //esto es para poner el calendario en español
+            culture="es" //esto es para poner el calendario en español
             localizer={localizer}
             events={events}
             defaultView={lastView}
