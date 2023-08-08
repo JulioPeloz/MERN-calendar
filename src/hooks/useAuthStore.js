@@ -35,7 +35,7 @@ export const useAuthStore = () => {
             dispatch(onLogin({name: data.name, uid: data.uid}));
         } catch (error) {
             console.log(error);
-            dispatch( onLogout(error.response.data?.msg || '--'));
+            dispatch( onLogout(error.response.data?.msg || Object.values(error.response.data.errors)[0].msg));
             setTimeout(() => {
                 dispatch( clearErrorMessage());
             }, 100);
