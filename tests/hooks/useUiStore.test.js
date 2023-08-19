@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react"
 import { useUiStore } from "../../src/hooks"
-import { store, uiSlice } from "../../src/store";
+import { uiSlice } from "../../src/store";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 
